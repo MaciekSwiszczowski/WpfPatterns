@@ -1,0 +1,6 @@
+addins
+
+VS Color
+Xaml binding debug output
+
+unload on hide

@@ -9,7 +9,10 @@
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0589" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="3.0.0-alpha0260" />
+    <PackageReference Include="MaterialDesignThemes" Version="2.6.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.3" />
+    <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="1.1.0-ci71" />
+    <PackageReference Include="ShowMeTheXAML.MSBuild" Version="1.1.0-ci71" />
   </ItemGroup>
 
 </Project>

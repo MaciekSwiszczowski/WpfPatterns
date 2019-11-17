@@ -1,29 +1,78 @@
 ﻿<mah:MetroWindow x:Class="WpfPatterns.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:controls="clr-namespace:WpfPatterns.Controls"
-        mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="450" Width="800"
-        WindowTransitionsEnabled="True"
-        Topmost="True"
-        SaveWindowPosition="True"
-        UseNoneWindowStyle="False"
-        IsWindowDraggable="True"
-        >
-    <TabControl TabStripPlacement="Left">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                 xmlns:viewModels="clr-namespace:WpfPatterns.ViewModels"
+                 xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                 xmlns:showMeTheXaml="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                 mc:Ignorable="d"
+                 Title="MainWindow"
+                 Height="450" Width="800"
+                 WindowTransitionsEnabled="True"
+                 Topmost="True"
+                 SaveWindowPosition="True"
+                 UseNoneWindowStyle="False"
+                 IsWindowDraggable="True"
 
-        <TabItem Header="Animate on DataTrigger" >
-            <controls:AnimateOnDataTrigger />
-        </TabItem>
+                 TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                 TextElement.FontWeight="Regular"
+                 TextElement.FontSize="25"
+                 TextOptions.TextFormattingMode="Ideal"
+                 TextOptions.TextRenderingMode="Auto">
 
-        <TabItem Header="Animate on EventTrigger" >
-            <controls:AnimateOnEventTrigger/>
-        </TabItem>
+    <mah:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+                <ResourceDictionary Source="Views/DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </mah:MetroWindow.Resources>
 
-    </TabControl>
+    <!--<showMeTheXaml:XamlDisplay Key="SomeUniqueString">-->
+
+    <ListBox ItemsSource="{Binding ViewModels}">
+
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal">
+                    <b:Interaction.Behaviors>
+                        <b:FluidMoveBehavior Duration="00:00:01" AppliesTo="Children">
+                            <b:FluidMoveBehavior.EaseY>
+                                <CircleEase EasingMode="EaseInOut" />
+                            </b:FluidMoveBehavior.EaseY>
+                        </b:FluidMoveBehavior>
+                    </b:Interaction.Behaviors>
+                </WrapPanel>
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+
+        <ListBox.ItemTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ViewModelBase}">
+                <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                    <materialDesign:Flipper.FrontContent>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                            Margin="10"
+                            FontSize="18"
+                            Content="{Binding Title}" />
+                    </materialDesign:Flipper.FrontContent>
+                    <materialDesign:Flipper.BackContent>
+                        <ContentPresenter ContentTemplate="{StaticResource BackContentDataTemplate}" />
+                    </materialDesign:Flipper.BackContent>
+
+                </materialDesign:Flipper>
+
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+
+    <!--</showMeTheXaml:XamlDisplay>-->
+
 
 </mah:MetroWindow>
