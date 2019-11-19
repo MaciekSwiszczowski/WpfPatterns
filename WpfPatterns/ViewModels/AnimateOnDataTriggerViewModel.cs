@@ -1,9 +1,8 @@
 ﻿namespace WpfPatterns.ViewModels
 {
-    public class AnimateOnDataTriggerViewModel : ViewModelBase
+    public class AnimateOnDataTriggerViewModel : ViewModelBase, IHaveTitleAndDescription
     {
-        public override string Title { get; set; } = "Animate on DataTrigger";
-        public override string Code { get; set; } = "DataTemplate for AnimateOnDataTriggerViewModel";
-        public override string Description { get; set; } = "Example animation changing some icon's properties on ToggleButton state change";
+        public string Title { get; set; } = "Animate on DataTrigger";
+        public string Description { get; set; } = "Example animation changing some icon's properties on ToggleButton state change";
     }
 }

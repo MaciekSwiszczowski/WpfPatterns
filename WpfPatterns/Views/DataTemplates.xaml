@@ -10,34 +10,53 @@
 
 
     <DataTemplate DataType="{x:Type viewModels:AnimateOnEventFromDataContextViewModel}">
-        <Rectangle Width="100"
+        <Border Width="100"
                    Height="100"
-                   x:Name="Rectangle"
-                   Fill="White">
-            <Rectangle.Resources>
+                   x:Name="Border"
+                   Background="Green">
+
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       x:Name="TextBlock"/>
+
+            <Border.Resources>
                 <Storyboard x:Key="FadeOutStoryboard">
                     <ColorAnimation To="White"
-                                    Storyboard.TargetName="Rectangle"
-                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                    Storyboard.TargetName="Border"
+                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                     Duration="0:0:0.9"
                                     BeginTime="0:0:01" />
                 </Storyboard>
-            </Rectangle.Resources>
+            </Border.Resources>
 
             <b:Interaction.Triggers>
-                <b:EventTrigger EventName="TickEvent"
+                <b:EventTrigger EventName="UpEvent"
                                 SourceObject="{Binding Mode=OneWay}">
-                    <b:ChangePropertyAction TargetObject="{Binding ElementName=Rectangle}"
-                                            PropertyName="Fill"
-                                            Value="DarkGray" />
+                    <b:ChangePropertyAction TargetObject="{Binding ElementName=Border}"
+                                            PropertyName="Background"
+                                            Value="Blue" />
+                    <b:ChangePropertyAction TargetObject="{Binding ElementName=TextBlock}"
+                                            PropertyName="Text"
+                                            Value="Up" />
+                    <b:ControlStoryboardAction Storyboard="{StaticResource FadeOutStoryboard}" />
+                </b:EventTrigger>
+
+                <b:EventTrigger EventName="DownEvent"
+                                SourceObject="{Binding Mode=OneWay}">
+                    <b:ChangePropertyAction TargetObject="{Binding ElementName=Border}"
+                                            PropertyName="Background"
+                                            Value="Red" />
+                    <b:ChangePropertyAction TargetObject="{Binding ElementName=TextBlock}"
+                                            PropertyName="Text"
+                                            Value="Down" />
                     <b:ControlStoryboardAction Storyboard="{StaticResource FadeOutStoryboard}" />
                 </b:EventTrigger>
             </b:Interaction.Triggers>
-        </Rectangle>
+        </Border>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:AnimateOnEventTriggerViewModel}">
-        <showMeTheXaml:XamlDisplay Key="AnimateOnEventTriggerViewModel">
+        <showMeTheXaml:XamlDisplay Key="SomeUniqueString">
             <Button Margin="10"
                     Height="100"
                     HorizontalAlignment="Center"
@@ -147,15 +166,6 @@
                   DataType="{x:Type viewModels:ViewModelBase}">
         <DockPanel LastChildFill="True"
                    MaxWidth="400">
-            <Button
-                Style="{StaticResource MaterialDesignToolForegroundButton}"
-                Command="{x:Static materialDesign:Flipper.FlipCommand}"
-                DockPanel.Dock="Top"
-                HorizontalAlignment="Left">
-                <materialDesign:PackIcon
-                    Kind="ArrowLeft"
-                    HorizontalAlignment="Right" />
-            </Button>
 
             <TextBlock Text="{Binding Description}"
                        TextWrapping="Wrap"

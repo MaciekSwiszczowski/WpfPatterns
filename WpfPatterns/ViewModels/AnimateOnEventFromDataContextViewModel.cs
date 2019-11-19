@@ -1,28 +1,41 @@
 ﻿using System;
-using System.Windows.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfPatterns.ViewModels
 {
-    public class AnimateOnEventFromDataContextViewModel : ViewModelBase
+    public class AnimateOnEventFromDataContextViewModel : ViewModelBase, IHaveTitleAndDescription
     {
-        public event EventHandler TickEvent;
+        private readonly Random _random = new Random();
 
-        public override string Title { get; set; } = "Animate on event in DataContext";
-        public override string Code { get; set; } = "DataTemplate for AnimateOnEventFromDataContextViewModel";
-        public override string Description { get; set; } = "";
+        public event EventHandler UpEvent;
+        public event EventHandler DownEvent;
+
+        public string Title { get; set; } = "Animate on event in DataContext";
+        public string Description { get; set; } = "";
 
         public AnimateOnEventFromDataContextViewModel()
         {
-            var timer = new DispatcherTimer(DispatcherPriority.ApplicationIdle) {Interval = TimeSpan.FromSeconds(2)};
-
-            timer.Tick += OnTick;
-
-            timer.Start();
+            Task.Run(SendUpNotifications);
+            Task.Run(SendDownNotifications);
         }
 
-        private void OnTick(object sender, EventArgs e)
+        private async Task SendUpNotifications()
         {
-            TickEvent?.Invoke(this, EventArgs.Empty);
+            while (true)
+            {
+                await Task.Delay(_random.Next(3000));
+                Application.Current.Dispatcher?.Invoke(() => UpEvent?.Invoke(this, EventArgs.Empty));
+            }
+        }
+
+        private async Task SendDownNotifications()
+        {
+            while (true)
+            {
+                await Task.Delay(_random.Next(3000));
+                Application.Current.Dispatcher?.Invoke(() => DownEvent?.Invoke(this, EventArgs.Empty));
+            }
         }
     }
 }

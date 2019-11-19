@@ -1,9 +1,8 @@
 ﻿namespace WpfPatterns.ViewModels
 {
-    public class ResizeWindowOnEventFromDataContextViewModel : ViewModelBase
+    public class ResizeWindowOnEventFromDataContextViewModel : ViewModelBase, IHaveTitleAndDescription
     {
-        public override string Title { get; set; }
-        public override string Code { get; set; }
-        public override string Description { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

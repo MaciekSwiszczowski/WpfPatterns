@@ -52,21 +52,18 @@
         </ListBox.ItemsPanel>
 
         <ListBox.ItemTemplate>
-            <DataTemplate DataType="{x:Type viewModels:ViewModelBase}">
-                <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
-                    <materialDesign:Flipper.FrontContent>
-                        <Button
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
-                            Margin="10"
-                            FontSize="18"
-                            Content="{Binding Title}" />
-                    </materialDesign:Flipper.FrontContent>
-                    <materialDesign:Flipper.BackContent>
-                        <ContentPresenter ContentTemplate="{StaticResource BackContentDataTemplate}" />
-                    </materialDesign:Flipper.BackContent>
+            <DataTemplate DataType="{x:Type viewModels:ExamplePlaceholder}">
+                <Expander HorizontalAlignment="Stretch"
+                          ExpandDirection="Down"
+                          IsExpanded="{Binding IsExpanded}"
+                          Header="{Binding Title}">
 
-                </materialDesign:Flipper>
+                    <ContentPresenter ContentTemplate="{StaticResource BackContentDataTemplate}"
+                                      Content="{Binding Example}" 
+                                      />
+
+                </Expander>
+
 
             </DataTemplate>
         </ListBox.ItemTemplate>

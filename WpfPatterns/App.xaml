@@ -27,9 +27,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/materialdesigncolor.orange.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.card.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.flipper.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.popupbox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.expander.xaml" />
 
                 <!-- other -->
                 <ResourceDictionary Source="pack://application:,,,/ShowMeTheXAML.AvalonEdit;component/Themes/xamldisplayer.xaml" />
@@ -37,7 +38,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!-- A copy-paste from MaterialDesignDemo app -->
-            <Style TargetType="showMeTheXaml:XamlDisplay" BasedOn="{StaticResource {x:Type showMeTheXaml:XamlDisplay}}">
+            <!--<Style TargetType="showMeTheXaml:XamlDisplay" BasedOn="{StaticResource {x:Type showMeTheXaml:XamlDisplay}}">
                 <Style.Resources>
                     <ResourceDictionary>
                         <avalonEdit:TextDocumentValueConverter x:Key="TextDocumentValueConverter"/>
@@ -112,7 +113,7 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </Style>
+            </Style>-->
 
         </ResourceDictionary>
     </Application.Resources>

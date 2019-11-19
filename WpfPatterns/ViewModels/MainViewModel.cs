@@ -4,17 +4,16 @@ namespace WpfPatterns.ViewModels
 {
     public class MainViewModel
     {
-        public ObservableCollection<ViewModelBase> ViewModels { get; set; } 
+        public ObservableCollection<ExamplePlaceholder> ViewModels { get; set; } 
 
         public MainViewModel()
         {
-            ViewModels = new ObservableCollection<ViewModelBase>
+            ViewModels = new ObservableCollection<ExamplePlaceholder>
             {
-                new AnimateOnDataTriggerViewModel(),
-                new AnimateOnEventTriggerViewModel(),
-                new AnimateOnEventFromDataContextViewModel(),
+                new ExamplePlaceholder(new AnimateOnDataTriggerViewModel()),
+                new ExamplePlaceholder(new AnimateOnEventTriggerViewModel()),
+                new ExamplePlaceholder(new AnimateOnEventFromDataContextViewModel()),
             };
-
         }
     }
 }
