@@ -3,4 +3,5 @@ addins
 VS Color
 Xaml binding debug output
 
-unload on hide
+- window resize
+- button with icon template

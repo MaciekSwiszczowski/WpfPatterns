@@ -39,7 +39,7 @@
 
         <ListBox.ItemsPanel>
             <ItemsPanelTemplate>
-                <WrapPanel Orientation="Horizontal">
+                <WrapPanel Orientation="Vertical">
                     <b:Interaction.Behaviors>
                         <b:FluidMoveBehavior Duration="00:00:01" AppliesTo="Children">
                             <b:FluidMoveBehavior.EaseY>
